@@ -35,4 +35,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh aw run update-github-info --ref "${{ github.ref_name }}"
+          gh aw run update-github-info --ref "${{ github.ref }}"
