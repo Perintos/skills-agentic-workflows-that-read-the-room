@@ -6,7 +6,6 @@ on:
     - cron: '0 9 * * *' # S'exécute chaque jour à 9h
 
 permissions:
-  actions: write
   contents: write
   pull-requests: write
 
@@ -25,14 +24,18 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Installer GitHub CLI Agentic Workflows
-        uses: github/gh-aw/actions/setup-cli@v0.88.7
-        with:
-          version: v0.88.7
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Installer l'extension GitHub CLI Agentic Workflows
+        run: |
+          gh extension install github/gh-aw || true
+          gh extension upgrade github/gh-aw || true
 
       - name: Exécuter l'Agentic Workflow
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+<<<<<<< Updated upstream
           gh aw run update-github-info --ref "${{ github.sha }}"
+=======
+          # Utilisation de la commande de l'extension pointant vers le fichier markdown de l'agent
+          gh aw run --file .github/agents/agentic-workflows.md
+>>>>>>> Stashed changes
