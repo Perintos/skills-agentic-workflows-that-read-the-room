@@ -33,5 +33,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Utilisation de la commande native de l'extension gh aw pour exécuter le workflow
-          gh aw run agentic-workflows
+          # Utilisation de la commande de l'extension pointant vers le fichier markdown de l'agent
+          gh aw run --file .github/agents/agentic-workflows.md
