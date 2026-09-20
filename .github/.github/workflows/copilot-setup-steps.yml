@@ -1,0 +1,58 @@
+name: Agentic Workflow - Mona Info Update
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 9 * * *' # S'exécute chaque jour à 9h
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code du dépôt
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configurer Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Exécuter l'agent
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # 1. Créer une nouvelle branche pour la PR
+          BRANCH_NAME="update-mona-site-$(date +%Y%m%d%H%M)"
+          git checkout -b "$BRANCH_NAME"
+
+          # 2. Exécuter l'agent avec la CLI Copilot
+          gh copilot exec --file .github/agents/agentic-workflows.md
+
+          # 3. Vérifier si des fichiers ont été modifiés par l'agent
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "feat: mise à jour automatique des infos GitHub pour Mona"
+            git push origin "$BRANCH_NAME"
+
+            # 4. Ouvrir la Pull Request avec le résumé
+            gh pr create \
+              --title "🤖 Mises à jour automatisées du site GitHub Info" \
+              --body "Cette Pull Request a été générée automatiquement par l'agent.
+              
+              ### Tâches effectuées :
+              - [x] Lecture des notes de Mona
+              - [x] Analyse du Blog et Changelog GitHub
+              - [x] Rédaction des modifications sur le site
+              - [x] Résumé des sources inclus dans les commits" \
+              --head "$BRANCH_NAME" \
+              --base main
+          else
+            echo "Aucune mise à jour détectée par l'agent aujourd'hui."
+          fi
