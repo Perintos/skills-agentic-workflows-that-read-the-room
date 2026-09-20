@@ -33,9 +33,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-<<<<<<< Updated upstream
-          gh aw run update-github-info --ref "${{ github.sha }}"
-=======
           # Utilisation de la commande de l'extension pointant vers le fichier markdown de l'agent
           gh aw run --file .github/agents/agentic-workflows.md
->>>>>>> Stashed changes
