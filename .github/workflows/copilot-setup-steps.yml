@@ -33,5 +33,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Passer explicitement le chemin du fichier agent à la commande de l'extension
           gh aw run .github/agents/agentic-workflows.md
