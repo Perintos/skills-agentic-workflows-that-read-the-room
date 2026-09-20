@@ -1,3 +1,8 @@
+---
+name: agentic-workflows
+description: Agent autonome chargé de mettre à jour le site web GitHub Info de Mona.
+---
+
 # Agent Mona - Veille et Mise à jour Web
 
 ## Rôle
