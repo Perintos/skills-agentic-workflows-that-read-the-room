@@ -4,6 +4,9 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 9 * * *' # S'exécute chaque jour à 9h
+  push:
+    branches:
+      - setup-agentic-workflows
 
 permissions:
   contents: write
@@ -33,4 +36,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh aw run .github/agents/agentic-workflows.md
+          # 1. Compiler l'agent pour qu'il soit exécutable par l'extension
+          gh aw compile .github/agents/agentic-workflows.md
+
+          # 2. Lancer l'agent compilé
+          gh aw run agentic-workflows
