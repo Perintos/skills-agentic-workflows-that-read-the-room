@@ -24,6 +24,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+      - name: Installer la CLI Copilot
+        run: |
+          # Commande d'installation de la CLI Copilot selon la doc du cours
+          # (souvent un npm install global ou un script d'installation)
+          npm install -g @github/copilot-cli
+
       - name: Exécuter l'agent
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
