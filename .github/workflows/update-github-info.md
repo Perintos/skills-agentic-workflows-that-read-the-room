@@ -44,5 +44,5 @@ When content comes from the GitHub Blog or GitHub Changelog, include source link
 
 If no relevant update is needed, use `noop`.
 
-Open a pull request for Mona to review.
+Open a draft pull request for Mona to review.
 Do not write directly to `main`; rely on `safe-outputs` with `create-pull-request`.

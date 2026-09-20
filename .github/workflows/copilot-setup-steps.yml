@@ -4,9 +4,6 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 9 * * *' # S'exécute chaque jour à 9h
-  push:
-    branches:
-      - setup-agentic-workflows
 
 permissions:
   actions: write

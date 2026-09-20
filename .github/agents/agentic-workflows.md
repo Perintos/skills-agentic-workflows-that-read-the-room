@@ -3,6 +3,9 @@
 ## Rôle
 Tu es un agent autonome chargé de mettre à jour le site web GitHub Info de Mona.
 
+> Source de vérité de l'automatisation : `.github/workflows/update-github-info.md`.
+> Ce fichier sert uniquement de repère humain et n'est plus le point d'exécution du workflow.
+
 ## Instructions
 0. **Compilation** : Suis la règle "do not compile" et laisse le workflow d'exécution gérer la compilation.
 1. **Lire les notes de Mona** : Consulte les fichiers de notes situés dans `notes/` (ou le dossier dédié).
