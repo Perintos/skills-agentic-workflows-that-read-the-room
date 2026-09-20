@@ -11,5 +11,5 @@ Tu es un agent autonome chargé de mettre à jour le site web GitHub Info de Mon
 3. **Mise à jour du site** :
    - Identifie les nouveautés pertinentes au vu des notes de Mona.
    - Modifie directement les fichiers du site web (ex: `site/` ou `README.md`) avec les nouvelles informations rédigées clairement.
-4. **Trçabilité** :
+4. **Traçabilité** :
    - Ajoute en bas des pages modifiées ou dans un fichier de changelog interne un résumé des sources (liens et dates) utilisées pour la mise à jour.
