@@ -31,7 +31,7 @@ network:
 
 Read `notes/mona-notes.md` before making changes.
 
-Use GitHub repository API tools to read repository files instead of terminal, CLI, or sandboxed commands.
+Prefer GitHub repository API tools when reading repository files.
 
 Use these sources:
 - `notes/mona-notes.md`

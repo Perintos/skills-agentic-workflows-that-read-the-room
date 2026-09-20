@@ -10,7 +10,8 @@ on:
 
 permissions:
   actions: write
-  contents: read
+  contents: write
+  pull-requests: write
 
 jobs:
   run-agent:
@@ -23,13 +24,10 @@ jobs:
           fetch-depth: 0
 
       - name: Installer gh-aw
-        uses: github/gh-aw/actions/setup-cli@main
+        uses: github/gh-aw/actions/setup-cli@v0.88.7
         with:
           github-token: ${{ github.token }}
-          version: latest
-
-      - name: Compiler le workflow agentique
-        run: gh aw compile .github/workflows/update-github-info.md --strict
+          version: v0.88.7
 
       - name: Exécuter l'Agentic Workflow
         env:
